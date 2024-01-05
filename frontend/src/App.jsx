@@ -1,10 +1,11 @@
-import { useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import EventsPage from "./pages/EventsPage";
 import EventDetailPage from "./pages/EventDetailPage";
 import NewEventPage from "./pages/NewEventPage";
 import EditEventPage from "./pages/EditEventPage";
+import Root from "./pages/Root";
+import Error from "./pages/Error";
 
 // Challenge / Exercise
 
@@ -31,23 +32,30 @@ import EditEventPage from "./pages/EditEventPage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "/events",
-    element: <EventsPage />,
-  },
-  {
-    path: "/events/:id",
-    element: <EventDetailPage />,
-  },
-  {
-    path: "/events/new",
-    element: <NewEventPage />,
-  },
-  {
-    path: "/events/:id/edit",
-    element: <EditEventPage />,
+    element: <Root />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/events",
+        element: <EventsPage />,
+      },
+      {
+        path: "/events/:id",
+        element: <EventDetailPage />,
+      },
+      {
+        path: "/events/new",
+        element: <NewEventPage />,
+      },
+      {
+        path: "/events/:id/edit",
+        element: <EditEventPage />,
+      },
+    ],
   },
 ]);
 function App() {
