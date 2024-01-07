@@ -5,7 +5,7 @@ import { useRouteError } from "react-router-dom";
 
 function Error() {
   const error = useRouteError();
-  let title = "An error occured!";
+  let title = "An error occured! -default";
   let message = "Something went wrong";
   if (error.status === 500) {
     message = error.data.message;
